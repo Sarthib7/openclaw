@@ -58,8 +58,11 @@ execution remote inside Sokosumi.
 
 ## Authentication
 
-- Ask for a Sokosumi API key directly when authentication is needed.
-- If the user does not have one, send them to:
+- Prefer `SOKOSUMI_API_KEY` in the environment or
+  `skills.entries.sokosumi.apiKey` in the active OpenClaw config.
+- Do not ask the user to paste the Sokosumi API key into the conversation
+  unless they explicitly want inline setup help.
+- If the user needs to create or configure an API key, send them to:
   - `https://app.sokosumi.com/signup`
   - `https://app.sokosumi.com/signin`
   - `https://app.sokosumi.com/connections`
@@ -170,8 +173,7 @@ curl -sS https://api.sokosumi.com/v1/users/me \
 
 ## Guardrails
 
-- Never ask for passwords, session cookies, raw auth tokens, refresh tokens, or
-  magic-link URLs.
+- Never ask for passwords, session cookies, refresh tokens, or magic-link URLs.
 - Never put the API key into repo files, docs, issue text, or commit messages.
 - If the task includes secrets, customer data, or proprietary material, confirm
   the user wants that data sent to the marketplace before creating work and
